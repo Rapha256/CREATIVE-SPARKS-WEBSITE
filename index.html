@@ -1,0 +1,1049 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Creative Spark Agency</title>
+
+    <!-- Favicon from Unsplash -->
+
+
+    <link
+      rel="icon"
+      type="image/png"
+      href="https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=32&h=32&fit=crop&auto=format"
+      sizes="32x32"
+    />
+
+
+    <!-- Bootstrap Icons CDN -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+
+
+    <!-- Bootstrap CSS CDN -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+
+    <style>
+      /* Essential custom styles that can't be replaced by Bootstrap */
+      html {
+        scroll-behavior: smooth;
+      }
+
+      .hero-section {
+        background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+          url("https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=1920&q=80");
+        background-size: cover;
+        background-position: center;
+        min-height: 100vh;
+      }
+
+
+      /* Navbar animations */
+      .navbar-nav .nav-item {
+        animation: slideInNav 0.5s ease forwards;
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+
+      .navbar-nav .nav-item:nth-child(1) { animation-delay: 0.1s; }
+      .navbar-nav .nav-item:nth-child(2) { animation-delay: 0.15s; }
+      .navbar-nav .nav-item:nth-child(3) { animation-delay: 0.2s; }
+      .navbar-nav .nav-item:nth-child(4) { animation-delay: 0.25s; }
+      .navbar-nav .nav-item:nth-child(5) { animation-delay: 0.3s; }
+      .navbar-nav .nav-item:nth-child(6) { animation-delay: 0.35s; }
+
+      @keyframes slideInNav {
+        to { opacity: 1; transform: translateY(0); }
+      }
+
+      .navbar-nav .nav-link {
+        position: relative;
+        transition: all 0.3s ease;
+      }
+
+      .navbar-nav .nav-link::before {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%) scaleX(0);
+        width: 100%;
+        height: 3px;
+        background: linear-gradient(90deg, transparent, #0dcaf0, #ffd700, #0dcaf0, transparent);
+        transition: transform 0.3s ease;
+      }
+
+      .navbar-nav .nav-link:hover::before,
+      .navbar-nav .nav-link.active::before {
+        transform: translateX(-50%) scaleX(0.8);
+      }
+
+      .navbar-nav .nav-link.active::after {
+        content: "";
+        position: absolute;
+        bottom: -5px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 6px;
+        height: 6px;
+        background: #0dcaf0;
+        border-radius: 50%;
+        box-shadow: 0 0 15px #0dcaf0;
+        animation: glowPulse 1.5s ease-in-out infinite;
+      }
+
+      @keyframes glowPulse {
+        0%, 100% { box-shadow: 0 0 5px #0dcaf0; transform: translateX(-50%) scale(1); }
+        50% { box-shadow: 0 0 20px #0dcaf0, 0 0 30px #ffd700; transform: translateX(-50%) scale(1.5); }
+      }
+
+
+      /* Impact Bar Animations */
+      .impact-bar {
+        background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+        border-top: 3px solid #0dcaf0;
+        border-bottom: 3px solid #0dcaf0;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .impact-bar::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 3px;
+        background: linear-gradient(90deg, transparent, #0dcaf0, transparent);
+        animation: scanLine 3s linear infinite;
+      }
+
+      @keyframes scanLine {
+        0% { left: -100%; }
+        100% { left: 100%; }
+      }
+
+      .impact-item {
+        text-align: center;
+        padding: 10px;
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        position: relative;
+        z-index: 2;
+      }
+
+      .impact-item:not(:last-child)::after {
+        content: "";
+        position: absolute;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        height: 40px;
+        width: 2px;
+        background: rgba(255, 255, 255, 0.2);
+        animation: dividerPulse 2s ease-in-out infinite;
+      }
+
+      @keyframes dividerPulse {
+        0%, 100% { height: 40px; opacity: 0.3; }
+        50% { height: 60px; opacity: 1; background: #0dcaf0; }
+      }
+
+      .impact-icon {
+        font-size: 2.5rem;
+        color: #0dcaf0;
+        display: inline-block;
+        animation: iconFloat 3s ease-in-out infinite;
+      }
+
+      @keyframes iconFloat {
+        0%, 100% { transform: translateY(0) rotate(0deg); }
+        25% { transform: translateY(-8px) rotate(5deg); }
+        75% { transform: translateY(8px) rotate(-5deg); }
+      }
+
+      .impact-number {
+        font-size: 2rem;
+        font-weight: 700;
+        color: white;
+        animation: numberGlow 2s ease-in-out infinite;
+      }
+
+      @keyframes numberGlow {
+        0% { text-shadow: 0 0 5px rgba(13, 202, 240, 0.3); transform: scale(1); }
+        50% { text-shadow: 0 0 20px rgba(13, 202, 240, 0.8), 0 0 30px rgba(13, 202, 240, 0.5); transform: scale(1.1); }
+        100% { text-shadow: 0 0 5px rgba(13, 202, 240, 0.3); transform: scale(1); }
+      }
+
+      .impact-number::after {
+        content: "";
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background: #0dcaf0;
+        transform: scaleX(0);
+        animation: underlineSlide 3s ease-in-out infinite;
+      }
+
+      @keyframes underlineSlide {
+        0%, 100% { transform: scaleX(0); opacity: 0; }
+        50% { transform: scaleX(1); opacity: 1; }
+      }
+
+      .impact-label {
+        font-size: 0.9rem;
+        color: rgba(255, 255, 255, 0.7);
+        text-transform: uppercase;
+        transition: all 0.3s ease;
+        animation: letterSpacing 3s ease-in-out infinite;
+      }
+
+      @keyframes letterSpacing {
+        0%, 100% { letter-spacing: 2px; }
+        50% { letter-spacing: 4px; color: #0dcaf0; }
+      }
+
+
+      /* Individual icon animations */
+      .impact-item:nth-child(1) .impact-icon { animation: iconSpin 4s ease-in-out infinite; }
+      .impact-item:nth-child(2) .impact-icon { animation: iconShake 3s ease-in-out infinite; }
+      .impact-item:nth-child(3) .impact-icon { animation: iconBounce 3.5s ease-in-out infinite; }
+      .impact-item:nth-child(4) .impact-icon { animation: iconPulse 2.5s ease-in-out infinite; }
+
+      @keyframes iconSpin { 0%,100% { transform: rotate(0deg); } 25% { transform: rotate(10deg); } 75% { transform: rotate(-10deg); } }
+      @keyframes iconShake { 0%,100% { transform: translateX(0); } 25% { transform: translateX(-5px); } 75% { transform: translateX(5px); } }
+      @keyframes iconBounce { 0%,100% { transform: scale(1); } 50% { transform: scale(1.2); } }
+      @keyframes iconPulse { 0%,100% { opacity: 1; } 50% { opacity: 0.6; } }
+
+      .impact-item:hover {
+        transform: translateY(-10px) scale(1.05);
+        background: rgba(13, 202, 240, 0.1);
+        border-radius: 10px;
+        box-shadow: 0 10px 30px rgba(13, 202, 240, 0.3);
+      }
+
+      .impact-item:hover .impact-icon {
+        animation: hoverShake 0.5s ease forwards;
+        color: #ffd700;
+      }
+
+      @keyframes hoverShake {
+        0% { transform: rotate(0deg); }
+        25% { transform: rotate(15deg); }
+        50% { transform: rotate(-15deg); }
+        75% { transform: rotate(5deg); }
+        100% { transform: rotate(0deg) scale(1.2); }
+      }
+
+      .impact-item:hover .impact-number {
+        animation: hoverPop 0.5s ease forwards;
+        color: #ffd700;
+      }
+
+      @keyframes hoverPop {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.3); }
+        100% { transform: scale(1.1); }
+      }
+
+      .impact-item:hover .impact-label {
+        color: #ffd700;
+        letter-spacing: 5px;
+      }
+
+
+
+      /* Service card hover effect */
+      .service-card {
+        transition: all 0.3s ease;
+      }
+
+      .service-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 30px rgba(13, 202, 240, 0.2) !important;
+      }
+
+      .service-sub {
+        display: none;
+        margin-top: 15px;
+      }
+
+      .service-card:hover .service-sub {
+        display: block;
+      }
+
+
+
+      /* Portfolio card styles */
+      .portfolio-card {
+        position: relative;
+        overflow: hidden;
+        transition: all 0.3s ease;
+      }
+
+      .portfolio-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 20px 40px rgba(13, 202, 240, 0.3);
+      }
+
+      .portfolio-card .card-img-top {
+        height: 250px;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+      }
+
+      .portfolio-card:hover .card-img-top {
+        transform: scale(1.1);
+      }
+
+      .project-details {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: rgba(0, 0, 0, 0.95);
+        color: white;
+        padding: 20px;
+        transform: translateY(100%);
+        transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        border-top: 3px solid #0dcaf0;
+        backdrop-filter: blur(5px);
+        z-index: 10;
+      }
+
+      .portfolio-card:hover .project-details {
+        transform: translateY(0);
+      }
+
+      .project-details h6 {
+        color: #0dcaf0;
+        font-weight: 700;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+      }
+
+      .project-features {
+        list-style: none;
+        padding: 0;
+      }
+
+      .project-features li {
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+        opacity: 0;
+        transform: translateX(20px);
+        transition: all 0.3s ease;
+        transition-delay: calc(0.1s * var(--item-index));
+      }
+
+      .portfolio-card:hover .project-features li {
+        opacity: 1;
+        transform: translateX(0);
+      }
+
+      .project-features li i { color: #0dcaf0; margin-right: 10px; }
+
+      .tech-stack {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 5px;
+        margin-top: 10px;
+      }
+
+      .tech-badge {
+        background: rgba(13, 202, 240, 0.2);
+        color: #0dcaf0;
+        padding: 4px 8px;
+        border-radius: 20px;
+        font-size: 0.7rem;
+        font-weight: 600;
+        border: 1px solid #0dcaf0;
+        transform: scale(0);
+        transition: transform 0.3s ease;
+        transition-delay: calc(0.05s * var(--badge-index));
+      }
+
+      .portfolio-card:hover .tech-badge {
+        transform: scale(1);
+      }
+
+      .view-project {
+        display: inline-block;
+        background: #0dcaf0;
+        color: #000;
+        padding: 5px 15px;
+        border-radius: 25px;
+        text-decoration: none;
+        font-size: 0.85rem;
+        font-weight: 600;
+        margin-top: 10px;
+        opacity: 0;
+        transform: translateY(10px);
+        transition: all 0.3s ease;
+        transition-delay: 0.4s;
+      }
+
+      .portfolio-card:hover .view-project {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .view-project:hover {
+        background: #fff;
+        transform: translateY(-2px) !important;
+        box-shadow: 0 5px 15px rgba(13, 202, 240, 0.4);
+      }
+
+      .project-details::before {
+        content: "✨ NEW";
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background: #0dcaf0;
+        color: #000;
+        padding: 3px 8px;
+        border-radius: 15px;
+        font-size: 0.6rem;
+        font-weight: 700;
+        opacity: 0;
+        animation: pulse 2s ease-in-out infinite;
+      }
+
+      .portfolio-card:hover .project-details::before {
+        opacity: 1;
+      }
+
+      @keyframes pulse {
+        0%, 100% { transform: scale(1); }
+        50% { transform: scale(1.1); background: #ffd700; }
+      }
+
+
+      /* Back to Top Button */
+      .back-to-top {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        width: 55px;
+        height: 55px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #0dcaf0, #0d6efd);
+        color: white;
+        border: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 28px;
+        box-shadow: 0 5px 20px rgba(13, 202, 240, 0.4);
+        z-index: 9999;
+        text-decoration: none;
+        animation: bounce 2s ease-in-out infinite;
+      }
+
+      @keyframes bounce {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-10px); box-shadow: 0 15px 30px rgba(13, 202, 240, 0.6); }
+      }
+
+      .back-to-top:hover {
+        transform: scale(1.1) rotate(360deg);
+        background: linear-gradient(135deg, #ffd700, #0dcaf0);
+        box-shadow: 0 10px 30px rgba(255, 215, 0, 0.5);
+      }
+
+      .back-to-top::before {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        background: rgba(13, 202, 240, 0.4);
+        z-index: -1;
+        animation: pulse-ring 2s infinite;
+      }
+
+      @keyframes pulse-ring {
+        0% { transform: scale(1); opacity: 0.5; }
+        100% { transform: scale(1.5); opacity: 0; }
+      }
+
+      /* Footer animations */
+
+
+      .footer {
+        background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+        border-top: 3px solid #0dcaf0;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .footer::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 2px;
+        background: linear-gradient(90deg, transparent, #0dcaf0, #ffd700, #0dcaf0, transparent);
+        animation: scanLine 3s linear infinite;
+      }
+
+      .footer a {
+        transition: all 0.3s ease;
+      }
+
+      .footer a:hover {
+        color: #0dcaf0 !important;
+        transform: translateY(-5px) scale(1.1);
+        text-shadow: 0 0 15px rgba(13, 202, 240, 0.5);
+      }
+
+      .social-icons {
+        display: flex;
+        gap: 15px;
+        justify-content: flex-end;
+      }
+
+      .social-icon {
+        width: 45px;
+        height: 45px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.1);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        color: white !important;
+        transition: all 0.4s ease;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .social-icon::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+        transition: left 0.5s ease;
+      }
+
+      .social-icon:hover::before { left: 100%; }
+      .social-icon:hover { transform: translateY(-8px) rotate(360deg); box-shadow: 0 10px 25px rgba(13, 202, 240, 0.4); }
+      .social-icon:nth-child(1):hover { background: #1877f2; }
+      .social-icon:nth-child(2):hover { background: #e4405f; }
+      .social-icon:nth-child(3):hover { background: #000000; }
+      .social-icon:nth-child(4):hover { background: #0a66c2; }
+
+      .footer .border-top { border-color: rgba(255, 255, 255, 0.1) !important; position: relative; overflow: hidden; }
+      .footer .border-top::after {
+        content: "";
+        position: absolute;
+        top: -1px;
+        left: -100%;
+        width: 100%;
+        height: 2px;
+        background: linear-gradient(90deg, transparent, #0dcaf0, transparent);
+        animation: slideBorder 3s linear infinite;
+      }
+
+      @keyframes slideBorder {
+        0% { left: -100%; }
+        100% { left: 100%; }
+      }
+
+
+      /* Responsive */
+      @media (max-width: 768px) {
+        .impact-item:not(:last-child)::after { display: none; }
+        .impact-bar { padding: 20px 0; }
+        .impact-number { font-size: 1.5rem; }
+        .project-details {
+          position: relative;
+          transform: translateY(0);
+          background: rgba(0, 0, 0, 0.9);
+          margin-top: 10px;
+          border-radius: 10px;
+        }
+        .portfolio-card:hover { transform: translateY(-5px); }
+        .social-icons { justify-content: center; margin-top: 20px; }
+        .back-to-top { bottom: 20px; right: 20px; width: 50px; height: 50px; font-size: 24px; }
+      }
+    </style>
+  </head>
+
+  <body data-bs-spy="scroll" data-bs-target="#navbarNav" data-bs-offset="70" tabindex="0">
+
+
+    <!-- Back to Top Button -->
+
+    <a href="#home" class="back-to-top"><i class="bi bi-arrow-up"></i></a>
+
+
+    <!-- Navigation Bar -->
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+      <div class="container">
+        <a class="navbar-brand fw-bold fs-3" href="#home">
+          <span class="text-info">✨</span> Creative Spark
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+            <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
+            <li class="nav-item"><a class="nav-link" href="#portfolio">Portfolio</a></li>
+            <li class="nav-item"><a class="nav-link" href="#team">Team</a></li>
+            <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+
+    <!-- Home/Hero Section -->
+
+    <section id="home" class="hero-section d-flex align-items-center">
+      <div class="container text-center text-white">
+        <h1 class="display-1 fw-bold mb-4">Creative Spark Agency</h1>
+        <p class="display-6 mb-4">Igniting Ideas. Designing the Future.</p>
+        <p class="lead mb-5 w-75 mx-auto">We turn ideas into powerful digital experiences through creativity, technology, and strategy.</p>
+        <div>
+          <a href="#services" class="btn btn-info btn-lg px-4 me-3">Our Services</a>
+          <a href="#contact" class="btn btn-outline-light btn-lg px-4">Contact Us</a>
+        </div>
+      </div>
+    </section>
+
+
+
+    <!-- About Section -->
+
+    <section id="about" class="bg-light py-5">
+      <div class="container">
+        <h2 class="text-center mb-5 display-4 fw-bold">About Creative Spark</h2>
+        <div class="row g-4">
+          <div class="col-12 mb-4">
+            <h3 class="text-info mb-3">Our Story</h3>
+            <p class="lead">Creative Spark Agency was founded with a simple goal — to help businesses grow through creativity and technology. What started as a small team of passionate designers and developers has grown into a full-service digital agency delivering innovative solutions to clients around the world.</p>
+          </div>
+          <div class="col-md-6">
+            <div class="p-4 bg-white rounded-3 shadow-sm h-100">
+              <h3 class="text-info mb-3">Our Mission</h3>
+              <p class="mb-0">To empower businesses with creative digital solutions that drive growth, improve customer engagement, and create lasting impact.</p>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="p-4 bg-white rounded-3 shadow-sm h-100">
+              <h3 class="text-info mb-3">Our Vision</h3>
+              <p class="mb-0">To become a leading creative digital agency known for transforming ideas into successful brands and digital experiences.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+
+    <!-- Impact Bar -->
+
+    <section class="impact-bar py-4">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-3 col-6"><div class="impact-item"><div class="impact-icon">🚀</div><div class="impact-number">150+</div><div class="impact-label">Projects</div></div></div>
+          <div class="col-md-3 col-6"><div class="impact-item"><div class="impact-icon">😊</div><div class="impact-number">98%</div><div class="impact-label">Satisfaction</div></div></div>
+          <div class="col-md-3 col-6"><div class="impact-item"><div class="impact-icon">👥</div><div class="impact-number">50+</div><div class="impact-label">Team</div></div></div>
+          <div class="col-md-3 col-6"><div class="impact-item"><div class="impact-icon">🏆</div><div class="impact-number">5+</div><div class="impact-label">Years</div></div></div>
+        </div>
+      </div>
+    </section>
+
+
+
+    <!-- Services Section -->
+
+    <section id="services" class="py-5">
+      <div class="container">
+        <h2 class="text-center mb-5 display-4 fw-bold">Our Services</h2>
+        <div class="row g-4">
+
+          <!-- Web Design -->
+
+          <div class="col-md-6 col-lg-3">
+            <div class="card h-100 service-card border-0 shadow-sm">
+              <img src="https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?auto=format&fit=crop&w=800&h=600&q=80" class="card-img-top" style="height:200px; object-fit:cover" alt="Web Design">
+              <div class="card-body text-center">
+                <h4 class="card-title text-info fw-bold">WEB DESIGN</h4>
+                <p class="card-text text-muted">Modern, responsive websites optimized for performance and user experience.</p>
+                <div class="service-sub">
+                  <div class="list-group">
+                    <div class="list-group-item d-flex align-items-center border-0 bg-light"><img src="https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?auto=format&fit=crop&w=50&h=50&q=80" class="rounded-circle me-3" width="40" height="40" style="object-fit:cover" alt=""><div class="text-start"><strong>UI/UX Design</strong><br><small class="text-muted">User-centered design</small></div></div>
+                    <div class="list-group-item d-flex align-items-center border-0 bg-light"><img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&w=50&h=50&q=80" class="rounded-circle me-3" width="40" height="40" style="object-fit:cover" alt=""><div class="text-start"><strong>Responsive Dev</strong><br><small class="text-muted">All devices perfect</small></div></div>
+                    <div class="list-group-item d-flex align-items-center border-0 bg-light"><img src="https://images.unsplash.com/photo-1523206489230-c012c64b2b48?auto=format&fit=crop&w=50&h=50&q=80" class="rounded-circle me-3" width="40" height="40" style="object-fit:cover" alt=""><div class="text-start"><strong>E-Commerce</strong><br><small class="text-muted">Online stores</small></div></div>
+                    <div class="list-group-item d-flex align-items-center border-0 bg-light"><img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=50&h=50&q=80" class="rounded-circle me-3" width="40" height="40" style="object-fit:cover" alt=""><div class="text-start"><strong>Custom Apps</strong><br><small class="text-muted">Tailored solutions</small></div></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Branding -->
+
+          <div class="col-md-6 col-lg-3">
+            <div class="card h-100 service-card border-0 shadow-sm">
+              <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=crop&w=800&h=600&q=80" class="card-img-top" style="height:200px; object-fit:cover" alt="Branding">
+              <div class="card-body text-center">
+                <h4 class="card-title text-info fw-bold">BRANDING</h4>
+                <p class="card-text text-muted">Memorable identities that represent your business effectively.</p>
+                <div class="service-sub">
+                  <div class="list-group">
+                    <div class="list-group-item d-flex align-items-center border-0 bg-light"><img src="https://images.unsplash.com/photo-1626785774573-4b799315345d?auto=format&fit=crop&w=50&h=50&q=80" class="rounded-circle me-3" width="40" height="40" style="object-fit:cover" alt=""><div class="text-start"><strong>Logo Design</strong><br><small class="text-muted">Unique & memorable</small></div></div>
+                    <div class="list-group-item d-flex align-items-center border-0 bg-light"><img src="https://images.unsplash.com/photo-1586717791821-3f44a563fa4c?auto=format&fit=crop&w=50&h=50&q=80" class="rounded-circle me-3" width="40" height="40" style="object-fit:cover" alt=""><div class="text-start"><strong>Brand Identity</strong><br><small class="text-muted">Colors & style</small></div></div>
+                    <div class="list-group-item d-flex align-items-center border-0 bg-light"><img src="https://images.unsplash.com/photo-1527799820374-dcf8d9d4a388?auto=format&fit=crop&w=50&h=50&q=80" class="rounded-circle me-3" width="40" height="40" style="object-fit:cover" alt=""><div class="text-start"><strong>Packaging</strong><br><small class="text-muted">Product design</small></div></div>
+                    <div class="list-group-item d-flex align-items-center border-0 bg-light"><img src="https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?auto=format&fit=crop&w=50&h=50&q=80" class="rounded-circle me-3" width="40" height="40" style="object-fit:cover" alt=""><div class="text-start"><strong>Brand Marketing</strong><br><small class="text-muted">Promo materials</small></div></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Digital Marketing -->
+
+          <div class="col-md-6 col-lg-3">
+            <div class="card h-100 service-card border-0 shadow-sm">
+              <img src="https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?auto=format&fit=crop&w=800&h=600&q=80" class="card-img-top" style="height:200px; object-fit:cover" alt="Digital Marketing">
+              <div class="card-body text-center">
+                <h4 class="card-title text-info fw-bold">DIGITAL MARKETING</h4>
+                <p class="card-text text-muted">Strategies to reach your target audience effectively.</p>
+                <div class="service-sub">
+                  <div class="list-group">
+                    <div class="list-group-item d-flex align-items-center border-0 bg-light"><img src="https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?auto=format&fit=crop&w=50&h=50&q=80" class="rounded-circle me-3" width="40" height="40" style="object-fit:cover" alt=""><div class="text-start"><strong>Social Media</strong><br><small class="text-muted">Engage & grow</small></div></div>
+                    <div class="list-group-item d-flex align-items-center border-0 bg-light"><img src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&w=50&h=50&q=80" class="rounded-circle me-3" width="40" height="40" style="object-fit:cover" alt=""><div class="text-start"><strong>Content Marketing</strong><br><small class="text-muted">Valuable content</small></div></div>
+                    <div class="list-group-item d-flex align-items-center border-0 bg-light"><img src="https://images.unsplash.com/photo-1596526131083-e8c633c948d2?auto=format&fit=crop&w=50&h=50&q=80" class="rounded-circle me-3" width="40" height="40" style="object-fit:cover" alt=""><div class="text-start"><strong>Email Campaigns</strong><br><small class="text-muted">Targeted emails</small></div></div>
+                    <div class="list-group-item d-flex align-items-center border-0 bg-light"><img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=50&h=50&q=80" class="rounded-circle me-3" width="40" height="40" style="object-fit:cover" alt=""><div class="text-start"><strong>PPC Ads</strong><br><small class="text-muted">Paid campaigns</small></div></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- SEO -->
+
+          <div class="col-md-6 col-lg-3">
+            <div class="card h-100 service-card border-0 shadow-sm">
+              <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&h=600&q=80" class="card-img-top" style="height:200px; object-fit:cover" alt="SEO">
+              <div class="card-body text-center">
+                <h4 class="card-title text-info fw-bold">SEO</h4>
+                <p class="card-text text-muted">Improve visibility on search engines and drive traffic.</p>
+                <div class="service-sub">
+                  <div class="list-group">
+                    <div class="list-group-item d-flex align-items-center border-0 bg-light"><img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=50&h=50&q=80" class="rounded-circle me-3" width="40" height="40" style="object-fit:cover" alt=""><div class="text-start"><strong>Keyword Research</strong><br><small class="text-muted">Find opportunities</small></div></div>
+                    <div class="list-group-item d-flex align-items-center border-0 bg-light"><img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=50&h=50&q=80" class="rounded-circle me-3" width="40" height="40" style="object-fit:cover" alt=""><div class="text-start"><strong>On-Page SEO</strong><br><small class="text-muted">Optimize content</small></div></div>
+                    <div class="list-group-item d-flex align-items-center border-0 bg-light"><img src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?auto=format&fit=crop&w=50&h=50&q=80" class="rounded-circle me-3" width="40" height="40" style="object-fit:cover" alt=""><div class="text-start"><strong>Link Building</strong><br><small class="text-muted">Build authority</small></div></div>
+                    <div class="list-group-item d-flex align-items-center border-0 bg-light"><img src="https://images.unsplash.com/photo-1573804633927-bfcbcd909acd?auto=format&fit=crop&w=50&h=50&q=80" class="rounded-circle me-3" width="40" height="40" style="object-fit:cover" alt=""><div class="text-start"><strong>Local SEO</strong><br><small class="text-muted">Dominate local</small></div></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+
+    <!-- Portfolio Section -->
+
+    <section id="portfolio" class="bg-light py-5">
+      <div class="container">
+        <h2 class="text-center mb-5 display-4 fw-bold">Our Recent Work</h2>
+        <div class="row g-4">
+
+          <!-- Project 1 -->
+
+          <div class="col-md-6 col-lg-3">
+            <div class="card portfolio-card border-0">
+              <img src="https://images.unsplash.com/photo-1523206489230-c012c64b2b48?auto=format&fit=crop&w=800&h=600&q=80" class="card-img-top" alt="E-Commerce Website">
+              <div class="card-body">
+                <h5 class="card-title fw-bold">E-Commerce Website</h5>
+                <p class="card-text text-muted">Online store for a fashion brand</p>
+              </div>
+              <div class="project-details">
+                <h6>✨ Project Highlights</h6>
+                <ul class="project-features">
+                  <li style="--item-index:1"><i>🛍️</i> 500+ products managed</li>
+                  <li style="--item-index:2"><i>💳</i> Secure payment integration</li>
+                  <li style="--item-index:3"><i>📱</i> Mobile-first design</li>
+                  <li style="--item-index:4"><i>🚀</i> 40% faster loading</li>
+                </ul>
+                <div class="tech-stack">
+                  <span class="tech-badge" style="--badge-index:1">React</span>
+                  <span class="tech-badge" style="--badge-index:2">Node.js</span>
+                  <span class="tech-badge" style="--badge-index:3">MongoDB</span>
+                  <span class="tech-badge" style="--badge-index:4">Stripe</span>
+                </div>
+                <a href="#" class="view-project">🔗 View Live Project</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 2 -->
+           
+          <div class="col-md-6 col-lg-3">
+            <div class="card portfolio-card border-0">
+              <img src="https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?auto=format&fit=crop&w=800&h=600&q=80" class="card-img-top" alt="Corporate Website">
+              <div class="card-body">
+                <h5 class="card-title fw-bold">Corporate Website</h5>
+                <p class="card-text text-muted">Professional site for consulting</p>
+              </div>
+              <div class="project-details">
+                <h6>🏢 Corporate Features</h6>
+                <ul class="project-features">
+                  <li style="--item-index:1"><i>📊</i> Client dashboard</li>
+                  <li style="--item-index:2"><i>📅</i> Booking system</li>
+                  <li style="--item-index:3"><i>📧</i> Newsletter integration</li>
+                  <li style="--item-index:4"><i>📈</i> Analytics dashboard</li>
+                </ul>
+                <div class="tech-stack">
+                  <span class="tech-badge" style="--badge-index:1">Vue.js</span>
+                  <span class="tech-badge" style="--badge-index:2">Laravel</span>
+                  <span class="tech-badge" style="--badge-index:3">MySQL</span>
+                  <span class="tech-badge" style="--badge-index:4">AWS</span>
+                </div>
+                <a href="#" class="view-project">🔗 Visit Website</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 3 -->
+
+          <div class="col-md-6 col-lg-3">
+            <div class="card portfolio-card border-0">
+              <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&w=800&h=600&q=80" class="card-img-top" alt="Mobile App Design">
+              <div class="card-body">
+                <h5 class="card-title fw-bold">Mobile App Design</h5>
+                <p class="card-text text-muted">Fitness app interface</p>
+              </div>
+              <div class="project-details">
+                <h6>📱 App Features</h6>
+                <ul class="project-features">
+                  <li style="--item-index:1"><i>❤️</i> Workout tracker</li>
+                  <li style="--item-index:2"><i>🥗</i> Meal planner</li>
+                  <li style="--item-index:3"><i>📊</i> Progress charts</li>
+                  <li style="--item-index:4"><i>🔔</i> Push notifications</li>
+                </ul>
+                <div class="tech-stack">
+                  <span class="tech-badge" style="--badge-index:1">Flutter</span>
+                  <span class="tech-badge" style="--badge-index:2">Firebase</span>
+                  <span class="tech-badge" style="--badge-index:3">Figma</span>
+                  <span class="tech-badge" style="--badge-index:4">iOS/Android</span>
+                </div>
+                <a href="#" class="view-project">🔗 View Prototype</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 4 -->
+
+          <div class="col-md-6 col-lg-3">
+            <div class="card portfolio-card border-0">
+              <img src="https://images.unsplash.com/photo-1626785774573-4b799315345d?auto=format&fit=crop&w=800&h=600&q=80" class="card-img-top" alt="Branding Project">
+              <div class="card-body">
+                <h5 class="card-title fw-bold">Branding Project</h5>
+                <p class="card-text text-muted">Restaurant brand identity</p>
+              </div>
+              <div class="project-details">
+                <h6>🎨 Brand Package</h6>
+                <ul class="project-features">
+                  <li style="--item-index:1"><i>🖌️</i> Logo design</li>
+                  <li style="--item-index:2"><i>🎨</i> Color palette</li>
+                  <li style="--item-index:3"><i>📇</i> Business cards</li>
+                  <li style="--item-index:4"><i>📦</i> Menu design</li>
+                </ul>
+                <div class="tech-stack">
+                  <span class="tech-badge" style="--badge-index:1">Photoshop</span>
+                  <span class="tech-badge" style="--badge-index:2">Illustrator</span>
+                  <span class="tech-badge" style="--badge-index:3">InDesign</span>
+                  <span class="tech-badge" style="--badge-index:4">Figma</span>
+                </div>
+                <a href="#" class="view-project">🔗 View Portfolio</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+
+    <!-- Team Section -->
+
+    <section id="team" class="py-5">
+      <div class="container">
+        <h2 class="text-center mb-5 display-4 fw-bold">Meet Our Creative Team</h2>
+        <div class="row g-4">
+          <div class="col-md-4">
+            <div class="card team-card text-center border-0 shadow-sm">
+              <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=800&q=80" class="card-img-top" style="height:300px; object-fit:cover" alt="Sarah Johnson">
+              <div class="card-body">
+                <h4 class="card-title fw-bold">Sarah Johnson</h4>
+                <p class="text-info fw-bold mb-2">Creative Director</p>
+                <p class="card-text">Sarah leads the creative vision and ensures innovation in every project.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card team-card text-center border-0 shadow-sm">
+              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=80" class="card-img-top" style="height:300px; object-fit:cover" alt="David Williams">
+              <div class="card-body">
+                <h4 class="card-title fw-bold">David Williams</h4>
+                <p class="text-info fw-bold mb-2">Lead Web Developer</p>
+                <p class="card-text">David builds responsive websites using modern technologies.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card team-card text-center border-0 shadow-sm">
+              <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=800&q=80" class="card-img-top" style="height:300px; object-fit:cover" alt="Emily Brown">
+              <div class="card-body">
+                <h4 class="card-title fw-bold">Emily Brown</h4>
+                <p class="text-info fw-bold mb-2">Digital Marketing Specialist</p>
+                <p class="card-text">Emily helps businesses grow through smart marketing strategies.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+
+    <!-- Contact Section -->
+
+    <section id="contact" class="bg-light py-5">
+      <div class="container">
+        <h2 class="text-center mb-5 display-4 fw-bold">Get In Touch</h2>
+        <div class="row g-5">
+          <div class="col-md-5">
+            <div class="bg-white p-4 rounded-3 shadow-sm h-100">
+              <h4 class="fw-bold mb-4">Contact Information</h4>
+              <div class="mb-4"><h5 class="text-info">📧 Email</h5><p class="lead">info@creativespark.com</p></div>
+              <div class="mb-4"><h5 class="text-info">📞 Phone</h5><p class="lead">+256 700 123 456</p></div>
+              <div><h5 class="text-info">📍 Address</h5><p class="lead">Kampala, Uganda</p></div>
+            </div>
+          </div>
+          <div class="col-md-7">
+            <div class="bg-white p-4 rounded-3 shadow-sm">
+              <h4 class="fw-bold mb-4">Send us a Message</h4>
+              <form>
+                <div class="mb-3"><input type="text" class="form-control form-control-lg" placeholder="Full Name" required></div>
+                <div class="mb-3"><input type="email" class="form-control form-control-lg" placeholder="Email Address" required></div>
+                <div class="mb-3"><input type="text" class="form-control form-control-lg" placeholder="Subject" required></div>
+                <div class="mb-4"><textarea class="form-control form-control-lg" rows="5" placeholder="Your Message" required></textarea></div>
+                <button type="submit" class="btn btn-info btn-lg px-5">Send Message</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+
+    <!-- Footer -->
+
+    <footer class="footer py-5">
+      <div class="container">
+        <div class="row">
+
+          <!-- Company Info -->
+
+          <div class="col-md-4 mb-4 mb-md-0">
+            <h4 class="text-info fw-bold mb-3"><i class="bi bi-stars"></i> Creative Spark</h4>
+            <p class="text-white-50 mb-3">Igniting ideas and designing the future with creative digital solutions.</p>
+            <div class="d-flex align-items-center mb-2"><i class="bi bi-envelope-fill text-info me-3 fs-5"></i><span class="text-white-50">info@creativespark.com</span></div>
+            <div class="d-flex align-items-center mb-2"><i class="bi bi-telephone-fill text-info me-3 fs-5"></i><span class="text-white-50">+256 700 123 456</span></div>
+            <div class="d-flex align-items-center"><i class="bi bi-geo-alt-fill text-info me-3 fs-5"></i><span class="text-white-50">Kampala, Uganda</span></div>
+          </div>
+
+          <!-- Quick Links -->
+
+          <div class="col-md-4 mb-4 mb-md-0">
+            <h5 class="text-white fw-bold mb-4">Quick Links</h5>
+            <div class="row">
+              <div class="col-6">
+                <ul class="list-unstyled">
+                  <li class="mb-3"><a href="#home" class="text-white-50 text-decoration-none"><i class="bi bi-chevron-right text-info me-2"></i>Home</a></li>
+                  <li class="mb-3"><a href="#about" class="text-white-50 text-decoration-none"><i class="bi bi-chevron-right text-info me-2"></i>About</a></li>
+                  <li class="mb-3"><a href="#services" class="text-white-50 text-decoration-none"><i class="bi bi-chevron-right text-info me-2"></i>Services</a></li>
+                </ul>
+              </div>
+              <div class="col-6">
+                <ul class="list-unstyled">
+                  <li class="mb-3"><a href="#portfolio" class="text-white-50 text-decoration-none"><i class="bi bi-chevron-right text-info me-2"></i>Portfolio</a></li>
+                  <li class="mb-3"><a href="#team" class="text-white-50 text-decoration-none"><i class="bi bi-chevron-right text-info me-2"></i>Team</a></li>
+                  <li class="mb-3"><a href="#contact" class="text-white-50 text-decoration-none"><i class="bi bi-chevron-right text-info me-2"></i>Contact</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- Newsletter & Social -->
+
+          <div class="col-md-4">
+            <h5 class="text-white fw-bold mb-4">Stay Connected</h5>
+            <p class="text-white-50 mb-3">Subscribe for updates</p>
+            <div class="input-group mb-4">
+              <input type="email" class="form-control bg-dark bg-opacity-10 text-white border-info" placeholder="Your email address" style="background:rgba(255,255,255,0.1)">
+              <button class="btn btn-info" type="button"><i class="bi bi-send-fill"></i></button>
+            </div>
+
+            <!-- Social Icons -->
+
+            <div class="social-icons">
+              <a href="#" class="social-icon"><i class="bi bi-facebook"></i></a>
+              <a href="#" class="social-icon"><i class="bi bi-instagram"></i></a>
+              <a href="#" class="social-icon"><i class="bi bi-twitter-x"></i></a>
+              <a href="#" class="social-icon"><i class="bi bi-linkedin"></i></a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Divider -->
+
+        <hr class="border-top my-4 opacity-25">
+
+
+        <!-- Bottom Footer -->
+
+        <div class="row align-items-center">
+          <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+            <p class="mb-0 text-white-50"><i class="bi bi-c-circle text-info me-1"></i> 2026 Creative Spark Agency. All Rights Reserved.</p>
+          </div>
+          <div class="col-md-6 text-center text-md-end">
+            <a href="#" class="text-white-50 text-decoration-none me-4"><i class="bi bi-shield-check me-1"></i>Privacy</a>
+            <a href="#" class="text-white-50 text-decoration-none me-4"><i class="bi bi-file-text me-1"></i>Terms</a>
+            <a href="#" class="text-white-50 text-decoration-none"><i class="bi bi-cookie me-1"></i>Cookies</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Bootstrap JavaScript CDN -->
+     
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
